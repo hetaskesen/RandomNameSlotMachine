@@ -10,9 +10,17 @@
   <div id="slot-machine">
     <h1>🎰 Spin and find out!</h1>
     <div id="reel" class="slot-reel"></div>
-    <button onclick="startSpin()">🎬 Spin</button>
-    <button onclick="stopSpin()">🛑 Stop</button>
+    
+    <!-- Upload Button -->
+    <input type="file" id="file-upload" accept=".csv, .xls, .xlsx" onchange="handleFileUpload(event)">
+    
+    <div>
+      <button onclick="startSpin()">🎬 Spin</button>
+      <button onclick="stopSpin()">🛑 Stop</button>
+    </div>
+    
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script> <!-- PapaParse for CSV -->
   <script src="script.js"></script>
 </body>
 </html>
