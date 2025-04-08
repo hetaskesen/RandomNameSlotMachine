@@ -20,15 +20,15 @@ body {
 #reel {
   width: 300px;
   height: 200px;
-  overflow: hidden;
+  overflow: hidden; /* Ensures names stay inside the container */
   border: 10px solid orange;
   border-radius: 20px;
   background-color: white;
+  position: relative; /* Ensures the names move within the container */
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Keeps the names aligned at the bottom */
-  margin: 20px auto;
-  position: relative;
+  flex-direction: column-reverse; /* Stack names from bottom to top */
+  justify-content: flex-start;
+  align-items: center;
 }
 
 button {
