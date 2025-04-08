@@ -26,9 +26,9 @@ body {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end; /* Keeps the names aligned at the bottom */
   margin: 20px auto;
+  position: relative;
 }
 
 button {
@@ -56,4 +56,6 @@ input[type="file"] {
   color: black;
   text-align: center;
   margin: 5px 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
