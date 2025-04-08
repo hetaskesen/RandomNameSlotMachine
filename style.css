@@ -29,6 +29,7 @@ body {
   flex-direction: column-reverse; /* Stack names from bottom to top */
   justify-content: flex-start;
   align-items: center;
+  margin: auto;
 }
 
 button {
