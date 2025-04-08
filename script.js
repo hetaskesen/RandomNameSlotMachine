@@ -26,6 +26,7 @@ function spinStep() {
   el.innerText = name;
   reel.appendChild(el);
 
+  // Set the shift value based on the number of names currently in the reel
   let shift = reel.children.length * 60;
   reel.style.transition = "none";  // Remove transition for smooth scroll
   reel.style.transform = "translateY(" + (-shift) + "px)"; // Moves names upward
