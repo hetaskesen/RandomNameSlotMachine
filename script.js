@@ -3,20 +3,26 @@ let spinning = false;
 let reel = document.getElementById("reel");
 let interval;
 let stopRequested = false;
+let spinTimeout;
 
+// Function to start spinning
 function startSpin() {
   if (spinning) return;
   spinning = true;
   stopRequested = false;
   reel.innerHTML = '';  // Clear previous names
+  
+  // Start spinning by adding new names to the reel
   spinStep();
 }
 
+// Function to make the names spin and scroll upwards
 function spinStep() {
   if (!spinning) return;
 
   const name = names[Math.floor(Math.random() * names.length)];
   const el = document.createElement("div");
+  el.classList.add("slot-name");
   el.innerText = name;
   reel.appendChild(el);
 
@@ -29,21 +35,26 @@ function spinStep() {
   }
 
   if (!stopRequested) {
-    interval = setTimeout(spinStep, 100);
-  } else {
-    // Stop after a brief delay and display final name
-    setTimeout(() => {
-      spinning = false;
-      const final = names[Math.floor(Math.random() * names.length)];
-      reel.innerHTML = '<div style="color: black; font-size: 30px; font-weight: bold;">🎉 ' + final + ' 🎉</div>';
-    }, 300);
+    spinTimeout = setTimeout(spinStep, 100); // Continue spinning
   }
 }
 
+// Function to stop the spin and display the final name
 function stopSpin() {
   if (!spinning) return;
   stopRequested = true;
-  reel.style.transition = "transform 0.2s ease-in-out";  // Smooth transition to stop
+
+  // Ensure smooth transition to stop
+  reel.style.transition = "transform 0.5s ease-in-out";  // Smooth transition to stop
+  let shift = reel.children.length * 60;
+  reel.style.transform = "translateY(-" + shift + "px)";
+
+  // After a brief delay, stop spinning and show the final name
+  setTimeout(() => {
+    spinning = false;
+    const final = names[Math.floor(Math.random() * names.length)];
+    reel.innerHTML = '<div class="slot-name">🎉 ' + final + ' 🎉</div>'; // Display final name
+  }, 500);
 }
 
 // Handle file upload (CSV or Excel)
