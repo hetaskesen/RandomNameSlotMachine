@@ -18,18 +18,20 @@ body {
 }
 
 #reel {
-  width: 300px;
-  height: 200px;
-  overflow: hidden; /* Ensures names stay inside the container */
-  border: 10px solid orange;
-  border-radius: 20px;
-  background-color: white;
-  position: relative; /* Ensures the names move within the container */
+  height: 100px; /* Adjust this height according to your design */
+  width: 300px; /* Adjust width as needed */
+  overflow: hidden;
+  position: relative;
   display: flex;
-  flex-direction: column-reverse; /* Stack names from bottom to top */
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  margin: auto;
+}
+
+.slot-name {
+  height: 60px;  /* Adjust this height to match the spacing between names */
+  font-size: 24px;  /* Adjust font size */
+  opacity: 0;  /* Initially set opacity to 0, will fade in */
+  transition: opacity 0.2s ease-in;
 }
 
 button {
@@ -49,14 +51,4 @@ button:hover {
 
 input[type="file"] {
   margin-bottom: 20px;
-}
-
-.slot-name {
-  font-size: 30px;
-  font-weight: bold;
-  color: black;
-  text-align: center;
-  margin: 5px 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
 }
