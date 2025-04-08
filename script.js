@@ -28,11 +28,17 @@ function spinStep() {
 
   let shift = reel.children.length * 60;
   reel.style.transition = "none";  // Remove transition for smooth scroll
-  reel.style.transform = "translateY(-" + shift + "px)";
+  reel.style.transform = "translateY(" + (-shift) + "px)"; // Moves names upward
 
+  // Ensure only a certain number of names are displayed
   if (reel.children.length > 20) {
     reel.removeChild(reel.firstChild); // Clean up old names
   }
+
+  // Fade in the names with transition
+  setTimeout(() => {
+    el.style.opacity = 1;
+  }, 10);
 
   if (!stopRequested) {
     spinTimeout = setTimeout(spinStep, 100); // Continue spinning
@@ -47,7 +53,7 @@ function stopSpin() {
   // Ensure smooth transition to stop
   reel.style.transition = "transform 0.5s ease-in-out";  // Smooth transition to stop
   let shift = reel.children.length * 60;
-  reel.style.transform = "translateY(-" + shift + "px)";
+  reel.style.transform = "translateY(" + (-shift) + "px)"; // Stop scrolling
 
   // After a brief delay, stop spinning and show the final name
   setTimeout(() => {
